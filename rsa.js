@@ -15,8 +15,23 @@ function onDecryptButtonClick () {
 }
 
 
-var rsa = { p: 7, q: 11, n: 77, e: 17, d: 53 }
 
+var RSA = (function () {
+  function RSA () {
+    this.data = { p: 7, q: 11, n: 77, e: 17, d: 53 }
+  }
+
+  RSA.prototype.getN = function() { return this.data.n };
+  RSA.prototype.getE = function() { return this.data.e };
+  RSA.prototype.getD = function() { return this.data.d };
+  RSA.prototype.genRandom = function() {
+    // not implemented
+  };
+
+  return RSA
+}());
+
+var rsa = new RSA()
 
 /* // Key pairs would normally be very large modulo in RSA keys, these functions support all utf8
 function IntToChar (i) { return String.fromCharCode(i); }
@@ -34,9 +49,11 @@ function encrypt(data, e, n) {
 
 function encryptString(plainTextArray) {
     var encryptionArray = []
+    var n = rsa.getN()
+    var e = rsa.getE()
     for (var i = 0, len = plainTextArray.length; i < len; i++) {
         var data = plainTextArray[i]
-        var encryptedData = encrypt(data, rsa.e, rsa.n)
+        var encryptedData = encrypt(data, e, n)
         encryptionArray.push(encryptedData)
     }
     return encryptionArray
@@ -45,10 +62,15 @@ function encryptString(plainTextArray) {
 function decrypt(encryptedArray) {
     var decryptedArray = []
     var number
+    var n = rsa.getN()
+    var d = rsa.getD()
     for (var i = 0, len = encryptedArray.length; i < len; i++) {
-        number = new BigNumber(encryptedArray[i]);
-        number = number.toPower(rsa.d).modulo(rsa.n);
-        decryptedArray.push(number);
+        number = new BigNumber(encryptedArray[i])
+        number = number
+          .toPower(d)
+          .modulo(n)
+
+        decryptedArray.push(number)
     }
   return decryptedArray;
 }
