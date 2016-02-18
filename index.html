@@ -1,5 +1,9 @@
+<head>
+    <meta charset="UTF-8">
+</head>
 <body>
     <style type="text/css">
+body { margin: 1em; font-family: sans-serif; }
 .encrypt-wrapper {
     width: 45vw;
     float: left;
@@ -9,20 +13,47 @@
     width: 45vw;
     float: right;
 }
+.target-buttons {
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+}
+.target-buttons a {
+    padding: .5em 1em;
+    display: inline-block;
+    margin-left: 1em;
+    text-decoration: none;
+}
+.show-when-targetted { display: none; }
+.show-when-targetted:target { display: block; }
 </style>
-    <div class="encrypt-wrapper">
-        <input type="text" id="message">
-        <button id="encrypt-button">Encrypt</button>
-        <h2 id="cipher"></h2>
+    <div class="target-buttons">
+        <a href="#RSA" style="background: #cf2">RSA</a>
+        <a href="#DES" style="background: #fc2">DES</a>
     </div>
-    
-    <div class="decrypt-wrapper">
-        <input type="text" id="cipher-text">
-        <button id="decrypt-button">Decrypt</button>
-        <h2 id="plaintext"></h2>
+    <div class="show-when-targetted" id="RSA">
+        <h1>RSA</h1>
+        <div class="encrypt-wrapper">
+            <input type="text" id="message">
+            <button id="encrypt-button">Encrypt</button>
+            <h2 id="cipher"></h2>
+        </div>
+        
+        <div class="decrypt-wrapper">
+            <input type="text" id="cipher-text">
+            <button id="decrypt-button">Decrypt</button>
+            <h2 id="plaintext"></h2>
+        </div>
+    </div>
+    <div class="show-when-targetted" id="DES">
+        <h1>DES</h1>
+        <input type="text" id="text">
+        <button id="des-encrypt">Encrypt</button>
+        <button id="des-decrypt">Decrypt</button>
     </div>
     <script src="./vendors/jquery.min.js"></script>
     <script src="./vendors/bignumber.min.js"></script>
     <script defer src="//localhost:9999/devreload.js"></script>
-    <script src="./client.js"></script>
+    <script src="./rsa.js"></script>
+    <script src="./des.js"></script>
 </body>

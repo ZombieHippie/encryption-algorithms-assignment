@@ -1,3 +1,5 @@
+;(function () {
+
 function onEncryptButtonClick () {
   var plaintext = $('#message').val();
   var encodedPaintext = encode(plaintext);
@@ -78,3 +80,5 @@ $('#message').val("abcdefg")
 onEncryptButtonClick()
 onDecryptButtonClick()
 
+
+}());
