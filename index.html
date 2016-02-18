@@ -24,6 +24,7 @@ body { margin: 1em; font-family: sans-serif; }
     margin-left: 1em;
     text-decoration: none;
 }
+textarea {width:100%; min-height: 10em; height: auto;}
 .show-when-targetted { display: none; }
 .show-when-targetted:target { display: block; }
 </style>
@@ -47,9 +48,27 @@ body { margin: 1em; font-family: sans-serif; }
     </div>
     <div class="show-when-targetted" id="DES">
         <h1>DES</h1>
-        <input type="text" id="text">
-        <button id="des-encrypt">Encrypt</button>
-        <button id="des-decrypt">Decrypt</button>
+        <label for="des-key-input">Key</label>
+        <input type="number" id="des-key-input" value="1234567" min="1000000" max="9999999">
+        <button id="des-gen-randkey">Random Key</button>
+        <br>
+        <div class="encrypt-wrapper">
+            <label for="des-str-input">Data to Encrypt</label>
+            <input type="text" id="des-str-input" value="teststri" maxlength="8">
+            <button id="des-encrypt">Encrypt</button>
+            <h2>Encryption Output</h2>
+            <pre id="des-encrypt-output"></pre>
+            <button id="des-copy">Copy data to Decrypt</button>
+        </div>
+        <div class="decrypt-wrapper">
+            <label for="des-dec-input">JSON Data to Decrypt</label>
+            <textarea id="des-dec-input" value=""></textarea>
+            <label for="des-deckey-input">Decryption Key</label>
+            <input type="number" id="des-deckey-input" value="1234567" min="1000000" max="9999999">
+            <button id="des-decrypt">Decrypt</button>
+            <h2>Decryption Output</h2>
+            <pre id="des-decrypt-output"></pre>
+        </div>
     </div>
     <script src="./vendors/jquery.min.js"></script>
     <script src="./vendors/bignumber.min.js"></script>
