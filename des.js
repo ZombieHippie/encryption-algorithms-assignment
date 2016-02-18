@@ -4,7 +4,7 @@
 function stringToBitArray(str) {
     var bitArray = [];
     for (var i=0; i < str.length; i++) {
-        bitArray.push(str[i].charCodeAt(0));
+        bitArray.push(str[i].charCodeAt(0).toString(2));
     }
     var bitObject = {
         left: bitArray.slice(0,4),
@@ -38,8 +38,7 @@ function generateKey() {
 // function to generate subkey based on cycle
 //generate subkey by xor original key with key / cycle number
 function generateSubkey(key, cycle) {
-    var orNum = Math.floor(key / cycle);
-    var subKey = key ^ orNum;
+    var subKey = key ^ cycle;
     return subKey;
 }
 
