@@ -1,0 +1,19 @@
+{
+  "name": "rsa-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm-run-all -p dev-serve dev-reload",
+    "dev-serve": "jade-dev . 8080",
+    "dev-reload": "devreload",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "devreload": "^0.1.2",
+    "jade-dev": "0.0.1",
+    "npm-run-all": "^1.5.1"
+  }
+}

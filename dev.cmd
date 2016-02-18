@@ -1,0 +1,1 @@
+"./node_modules/.bin/jade-dev" . 8080

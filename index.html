@@ -1,0 +1,28 @@
+<body>
+    <style type="text/css">
+.encrypt-wrapper {
+    width: 45vw;
+    float: left;
+}
+
+.decrypt-wrapper {
+    width: 45vw;
+    float: right;
+}
+</style>
+    <div class="encrypt-wrapper">
+        <input type="text" id="message">
+        <button id="encrypt-button">Encrypt</button>
+        <h2 id="cipher"></h2>
+    </div>
+    
+    <div class="decrypt-wrapper">
+        <input type="text" id="cipher-text">
+        <button id="decrypt-button">Decrypt</button>
+        <h2 id="plaintext"></h2>
+    </div>
+    <script src="./vendors/jquery.min.js"></script>
+    <script src="./vendors/bignumber.min.js"></script>
+    <script defer src="//localhost:9999/devreload.js"></script>
+    <script src="./client.js"></script>
+</body>
