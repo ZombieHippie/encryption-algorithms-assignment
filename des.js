@@ -93,10 +93,10 @@ function decrypt(bitObject, key) {
     return bitObject;
 }
 
-function getKey () { return $('#des-key-input').val() }
+function getKey () { return parseInt($('#des-key-input').val()) }
 function getStr () { return $('#des-str-input').val() }
 
-function getDecKey() { return $("#des-deckey-input").val() }
+function getDecKey() { return parseInt($("#des-deckey-input").val()) }
 function getDecData() { return JSON.parse($("#des-dec-input").val()) }
 
 function outputDecrypt (data) {
