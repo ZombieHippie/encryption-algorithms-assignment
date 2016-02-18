@@ -180,9 +180,13 @@ $('#des-copy').click(function () {
 })
 
 // test
-$('#des-gen-randkey').click()
-$('#des-encrypt').click()
-$('#des-copy').click()
-$('#des-decrypt').click()
+function encryptCopyDecrypt () {
+    $('#des-encrypt').click()
+    $('#des-copy').click()
+    $('#des-decrypt').click()
+}
+$('#des-run-test').click(encryptCopyDecrypt)
 
+$('#des-gen-randkey').click()
+$('#des-run-test').click()
 }());
