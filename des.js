@@ -36,6 +36,7 @@ function generateKey() {
 
 
 // function to generate subkey based on cycle
+//generate subkey by xor original key with key / cycle number
 function generateSubkey(key, cycle) {
     var orNum = Math.floor(key / cycle);
     var subKey = key ^ orNum;
@@ -43,7 +44,7 @@ function generateSubkey(key, cycle) {
 }
 
 
-// 
+// funciton to xor right array with sub key
 function cycleFunc(bitArray, subKey) {
     var newObjectHalf = [];
     for (var j=0; j < bitArray.length; j++){
@@ -52,7 +53,7 @@ function cycleFunc(bitArray, subKey) {
     return newObjectHalf;
 }
 
-
+// xor the two halves of the bitarray
 function xOrHalves(bitArrayLeft, bitArrayRight) {
     for (var k=0; k < bitArrayLeft.length; k++) {
         bitArrayRight[k] = bitArrayRight[k] ^ bitArrayLeft[k];
@@ -62,6 +63,7 @@ function xOrHalves(bitArrayLeft, bitArrayRight) {
 
 
 // cycle function takes L, R, cycle#, key
+// main cycle funciton, gives new L and R for next cycle.
 function desCycle(bitObject, key, cycle) {
     var newObject = {};
     var subKey = generateSubkey(key, cycle);
@@ -72,6 +74,7 @@ function desCycle(bitObject, key, cycle) {
 
 
 // encrypt function
+// starts encryptioin and runs through 16 cycles of desCycle
 function encrypt(key, bitObject) {
     for (var i=0; i < 16; i++) {
         bitObject = desCycle(bitObject, key, i);
@@ -85,6 +88,7 @@ function encrypt(key, bitObject) {
 
 
 // decrypt funciton
+// runs cycle in reverse order 
 function decrypt(bitObject, key) {
     for (var i=16; i > 0; i--) {
         bitObject = desCycle(bitObject, key, i);
@@ -149,7 +153,7 @@ $('#des-decrypt').click(function () {
         outputDecrypt({
             input: {
                 key: key,
-                str: str
+                bits: bits
             },
             output: {
                 string: resStr,
